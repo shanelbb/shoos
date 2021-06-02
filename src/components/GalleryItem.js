@@ -1,15 +1,34 @@
-import Ratings from './Ratings';
 import SizeDropdown from './SizeDropdown';
 import QtyDropdown from './QtyDropdown';
 
-function GalleryItem({ shoe, openModal, setModalShoeData, category, addShoeToBag, setQuantity }) {
+function GalleryItem({ shoe, openModal, quantity, setModalShoeData, category, addShoeToBag, shoeToAdd, setShoeToAdd, setQuantity, selectedSize, setSelectedSize }) {
+   
     const selectedShoe = () => {
         setModalShoeData({ brand: shoe.brand, style: shoe.style, price: shoe.price, image: shoe.image})
         openModal()
     }
 
+    const addShoeOnChange = () => {
+        console.log(shoeToAdd);
+        setShoeToAdd({
+            brand: shoe.brand,
+            style: shoe.style,
+            price: shoe.price,
+            image: shoe.image,
+            size: selectedSize,
+            quantity: quantity
+        })
+    }
+
+    const addingShoe = () => {
+        
+        if(shoeToAdd.quantity) {
+            addShoeToBag(shoeToAdd)
+            setShoeToAdd({})
+        } 
+    }
+
     const lowerCategory = category.toLowerCase();
-   
     
     return(
     <>           
@@ -19,12 +38,14 @@ function GalleryItem({ shoe, openModal, setModalShoeData, category, addShoeToBag
              <p className="style">{shoe.style}</p>
              <img onClick={selectedShoe} className='shoeImg' src={shoe.image} alt={shoe.style}/>
              <p className="price">${shoe.price}</p>
-             <Ratings />
              <div className='dropdowns'>
-             <SizeDropdown />
-             <QtyDropdown setQuantity={setQuantity}/>
+             <SizeDropdown 
+             setSelectedSize={setSelectedSize}/>
+             <QtyDropdown 
+             setQuantity={setQuantity}
+             addShoeOnChange={addShoeOnChange}/>
              </div>
-             <button onClick={addShoeToBag} className='addToBag galleryAdd'>Add To Bag</button>
+             <button onClick={addingShoe} className='addToBag galleryAdd'>Add To Bag</button>
              
         </div> ) : null}  
     </>

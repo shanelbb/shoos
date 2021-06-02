@@ -1,7 +1,12 @@
 
-function SizeDropdown() {
+function SizeDropdown({setSelectedSize}) {
+    
+    const handleChange = (e) => {
+        setSelectedSize(e.target.value);
+    }
+
     return(
-        <form action="" className='selects'>
+        <form onChange={handleChange} action="" className='selects'>
             <label htmlFor="size">Size</label>
             <select name="size" id="size">
                 <option value="6">6</option>

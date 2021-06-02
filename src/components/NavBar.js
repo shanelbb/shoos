@@ -21,7 +21,7 @@ function NavBar({ setCategory }) {
 
     return(
         <nav className="categoryNav">
-            <ul className='wrapper navBar' /*style={css}*/>
+            <ul className='wrapper navBar'>
                 <Link to='/gallery'><li onClick={chosenCategory} className='categoryLi'>New Arrivals</li></Link>
                 <Link to='/gallery'><li onClick={chosenCategory} className='categoryLi'>Sneakers</li></Link>
                 <Link to='/gallery'><li onClick={chosenCategory} className='categoryLi'>Dress Shoes</li></Link>

@@ -1,12 +1,30 @@
-import Ratings from './Ratings'
 import SizeDropdown from './SizeDropdown'
 import QtyDropdown from './QtyDropdown'
 import close from '../assets/close.png'
 
-function ShoeModal({modalClass, setModalClass, modalShoeData}) {
+
+function ShoeModal({modalClass, setModalClass, modalShoeData, addShoeToBag, shoeToAdd, setShoeToAdd, quantity, setQuantity, selectedSize, setSelectedSize}) {
 
     const closeModal = () => {
         setModalClass('shoeModal')
+    }
+
+    const addShoeOnChange = () => {
+        setShoeToAdd({
+            brand: modalShoeData.brand,
+            style: modalShoeData.style,
+            price: modalShoeData.price,
+            image: modalShoeData.image,
+            size: selectedSize,
+            quantity: quantity
+        })
+    }
+
+    const addingShoe = () => {
+        if(shoeToAdd.quantity) {
+            addShoeToBag(shoeToAdd)
+            setShoeToAdd({})
+        } 
     }
 
     return (
@@ -20,15 +38,14 @@ function ShoeModal({modalClass, setModalClass, modalShoeData}) {
                 </div>
                 <div className="modalBottomText">
                     <p className="style">{modalShoeData.style}</p>
-                    <div className='modalRating'>
-                    <p>Your Rating: </p>
-                    <Ratings />
-                    </div>
                 </div>
                 <div className="modalDropdowns">
-                    <SizeDropdown />
-                    <QtyDropdown />
-                    <button className='addToBag'>Add To Bag</button>
+                    <SizeDropdown setSelectedSize={setSelectedSize}/>
+                    <QtyDropdown 
+                    setQuantity={setQuantity}
+                    addShoeOnChange={addShoeOnChange}
+                    />
+                    <button onClick={addingShoe} className='addToBag'>Add To Bag</button>
                 </div>
             </div>
         </div>

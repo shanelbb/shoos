@@ -1,12 +1,13 @@
 
-function QtyDropdown({ setQuantity }) {
+function QtyDropdown({ setQuantity, addShoeOnChange }) {
     const howMany = (e) => {
         setQuantity(e.target.value);
+        addShoeOnChange();
     }
     return(
-        <form action="" className='selects'>
+        <form onChange={howMany} action="" className='selects'>
             <label htmlFor="qty">Qty</label>
-            <select onChange={howMany} name="qty" id="qty">
+            <select  name="qty" id="qty">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>

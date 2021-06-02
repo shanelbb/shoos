@@ -9,7 +9,7 @@ function Footer() {
                 <p>Email Us: information@shoos.com</p>
             </div>
             <div className="siteInfo">
-                <p>Made at <a href="https://junocollege.com/">Juno College</a> by Shanel Beebe &#169; 2021</p>
+                <p>Made by <a href="https://shanelbeebe.com/">Shanel Beebe</a> &#169; 2021</p>
                 <p>Images courtesy of <a href="https://unsplash.com/">unsplash.com</a></p>
             </div>
         </footer>

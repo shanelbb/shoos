@@ -261,14 +261,17 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-.shoppingBag {
+
+.shoppingBagIcon {
   position: relative;
 }
+
 .shopping {
   width: 45px;
   height: 45px;
   margin-top: 10px;
 }
+
 .bagQty {
   position: absolute;
   bottom: 0;
@@ -324,16 +327,95 @@ a {
   top: 6px;
 }
 
-.menu {
+.menu,
+.shoppingBag {
   transform: translateY(-500vh);
   transition: transform 0.5s;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  width: 40%;
   margin: 0;
   position: absolute;
   right: 0;
+}
+
+.menu {
   top: 94px;
+  width: 40%;
+}
+
+.shoppingBag {
+  top: 172px;
+  padding: 20px;
+  width: 50%;
+  
+}
+
+.shoppingBag h4 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 0;
+  text-align: center;
+}
+
+.shoppingBag h5, 
+.shoppingContent,
+.shoppingBtns button {
+  text-transform: uppercase;
+}
+
+.shoppingContent h5 {
+  text-align: center;
+}
+
+.shoppingContent .total {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.shoppingContentItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.shoppingContentItem div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.shoppingContentItem p {
+  margin-top: 0;
+
+}
+
+.shoppingContentItem img {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.qtyNum {
+  text-align: right;
+}
+
+.shoppingBtns {
+  display: flex;
+  flex-direction: column;
+}
+
+.shoppingBtns :first-child {
+  margin-bottom: 15px;
+}
+
+.shoppingBtns button {
+  font-family: Helvetica, sans-serif;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  padding: 15px 0 10px;
 }
 
 .menuLi {
@@ -412,7 +494,9 @@ a {
 }
 
 .brand,
-.price {
+.price,
+.qty,
+.size {
   font-weight: bold;
   font-size: 0.8rem;
 }
@@ -423,20 +507,23 @@ a {
   height: 25px;
 }
 
-.price {
+.galleryItem .price {
   text-align: right;
+  margin: 20px 0;
 }
 
 .rating {
   text-align: right;
-}
-
-.rating ul {
-  margin: 0;
-  list-style-type: none;
   display: flex;
   justify-content: flex-end;
   padding-left: 10px;
+  margin: 0;
+}
+
+.rating button {
+  background: none;
+  border: none;
+  padding: 0;
 }
 .star {
   width: 20px;
@@ -507,6 +594,7 @@ a {
 .shoeModal.open {
   opacity: 1;
   pointer-events: all;
+  max-width: 100vw;
 }
 
 .modalContent {
@@ -514,14 +602,14 @@ a {
   transform: translateY(-200vh);
   transition: all 0.5s;
   border: 1px solid black;
-  padding: 20px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 80%;
   max-height: calc(100vh - 40px);
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .shoeModal.open .modalContent {
@@ -529,8 +617,11 @@ a {
 }
 
 .modalImg {
-  max-width: 100%;
+  overflow-y: scroll;
+  padding-top: 20px;
+  width: 100%;
   max-height: 500px;
+  object-fit: cover;
 }
 
 .modalTopText,
@@ -563,6 +654,7 @@ a {
 .modalDropdowns {
   width: 100%;
   margin-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -585,7 +677,7 @@ footer {
 
 footer h3 {
   font-family: 'Gruppo', sans-serif;
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 0 0 20px 0;
 }
 
@@ -626,6 +718,10 @@ footer a {
 }
 
 @media (max-width: 900px) {
+  .menu {
+    width: 50%;
+  }
+
   .categoryLi {
     font-size: 0.8rem;
   }
@@ -633,6 +729,11 @@ footer a {
   .category {
     width: 45%;
   }
+
+  .banner a {
+    width: 60%;
+  }
+
   .galleryItem .brand,
   .galleryItem .price {
     font-size: 0.7rem;
@@ -663,6 +764,11 @@ footer a {
   .menu {
     width: 80%;
   }
+
+  .menuLi,
+  h4 {
+    margin-right: 10%;
+  }
 }
 
 @media (max-width: 610px) {
@@ -672,6 +778,12 @@ footer a {
 
   .category {
     width: 65%;
+  }
+}
+
+@media (max-width: 510px) {
+  .banner a {
+    width: 80%;
   }
 }
 
@@ -692,11 +804,15 @@ footer a {
   }
 
   .categoryNav ul {
-    width: 100%;
+    width: 80%;
   }
 
   .menu {
     width: 100%;
+  }
+
+  .menuLi {
+    
   }
 
   .category {
@@ -726,7 +842,7 @@ footer a {
   }
 
   footer h3 {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   footer p {
