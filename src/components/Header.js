@@ -14,7 +14,7 @@ function Header({setCategory, bagQty, shoeData}) {
     }
 
     return(
-        <header>
+        <header id='top'>
             <div className="topBar wrapper">
                 <Link to='/'><h1>shoos.</h1></Link>
                 <div className="shoppingBagIcon" onClick={toggleMenu}>
